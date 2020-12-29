@@ -1059,8 +1059,8 @@ static int const RCTVideoUnset = -1;
   }
 
   [self setMaxBitRate:_maxBitRate];
-  [self setSelectedAudioTrack:_selectedAudioTrack];
-  [self setSelectedTextTrack:_selectedTextTrack];
+//  [self setSelectedAudioTrack:_selectedAudioTrack];
+//  [self setSelectedTextTrack:_selectedTextTrack];
   [self setResizeMode:_resizeMode];
   [self setRepeat:_repeat];
   [self setPaused:_paused];
@@ -1117,21 +1117,21 @@ static int const RCTVideoUnset = -1;
   [_player.currentItem selectMediaOption:mediaOption inMediaSelectionGroup:group];
 }
 
-- (void)setSelectedAudioTrack:(NSDictionary *)selectedAudioTrack {
-  _selectedAudioTrack = selectedAudioTrack;
-  [self setMediaSelectionTrackForCharacteristic:AVMediaCharacteristicAudible
-                                   withCriteria:_selectedAudioTrack];
-}
+//- (void)setSelectedAudioTrack:(NSDictionary *)selectedAudioTrack {
+//  _selectedAudioTrack = selectedAudioTrack;
+//  [self setMediaSelectionTrackForCharacteristic:AVMediaCharacteristicAudible
+//                                   withCriteria:_selectedAudioTrack];
+//}
 
-- (void)setSelectedTextTrack:(NSDictionary *)selectedTextTrack {
-  _selectedTextTrack = selectedTextTrack;
-  if (_textTracks) { // sideloaded text tracks
-    [self setSideloadedText];
-  } else { // text tracks included in the HLS playlist
-    [self setMediaSelectionTrackForCharacteristic:AVMediaCharacteristicLegible
-                                     withCriteria:_selectedTextTrack];
-  }
-}
+//- (void)setSelectedTextTrack:(NSDictionary *)selectedTextTrack {
+//  _selectedTextTrack = selectedTextTrack;
+//  if (_textTracks) { // sideloaded text tracks
+//    [self setSideloadedText];
+//  } else { // text tracks included in the HLS playlist
+//    [self setMediaSelectionTrackForCharacteristic:AVMediaCharacteristicLegible
+//                                     withCriteria:_selectedTextTrack];
+//  }
+//}
 
 - (void) setSideloadedText {
   NSString *type = _selectedTextTrack[@"type"];
@@ -1250,7 +1250,7 @@ static int const RCTVideoUnset = -1;
   _textTracks = textTracks;
 
   // in case textTracks was set after selectedTextTrack
-  if (_selectedTextTrack) [self setSelectedTextTrack:_selectedTextTrack];
+//  if (_selectedTextTrack) [self setSelectedTextTrack:_selectedTextTrack];
 }
 
 - (NSArray *)getAudioTrackInfo
